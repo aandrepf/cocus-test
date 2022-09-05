@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import "./styles/responsive";
 @import "./styles/main";
 
 .input-grey-rounded {
@@ -105,7 +106,7 @@
 }
 
 .create-note {
-  width: 380px;
+  //width: 380px;
   & input[type="text"],
   & textarea {
     padding: 7px !important;
@@ -154,7 +155,7 @@
 
 .home {
   position: relative;
-  padding: 0 20px;
+  // padding: 0 20px;
   margin-bottom: 60px;
   & .home-info {
     margin-bottom: 10px;

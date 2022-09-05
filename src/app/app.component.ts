@@ -4,7 +4,7 @@ import {
   NotesInfo,
   NotesFilter,
 } from './../database/notes.data';
-import { Component, OnDestroy } from '@angular/core';
+import { Component, HostListener, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { NgxUiLoaderConfig } from 'ngx-ui-loader';
@@ -27,6 +27,8 @@ export class AppComponent implements OnDestroy {
   notesFilter$: Observable<NotesFilter> = this.noteStateService.filter$;
   filterApp = new NotesFilter();
   isToListView = true;
+  sideLeft = 'side';
+  sideRight = 'over';
 
   constructor(fb: FormBuilder, private noteStateService: NotesStateService, private loader: LoaderService) {
     this.options = fb.group({
