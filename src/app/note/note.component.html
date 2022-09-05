@@ -4,7 +4,7 @@
       <img src="https://picsum.photos/id/1002/200" alt="" />
       <div class="header-left">
         <span class="note-username">You</span>
-        <span class="note-time">{{ note.time }}</span>
+        <span class="note-time">{{ note.time | timeAgo }}</span>
       </div>
       <div class="header-icons">
         <small class="{{ note.category }}">{{ note.category }}</small>

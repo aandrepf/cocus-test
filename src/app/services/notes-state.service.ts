@@ -124,5 +124,12 @@ export class NotesStateService extends StateService<NotesState> {
         return item;
       }
     });
+    // .sort((a, b) =>
+    //   new Date(a.time) > new Date(b.time)
+    //     ? 1
+    //     : new Date(b.time) > new Date(a.time)
+    //     ? -1
+    //     : 0
+    // );
   }
 }

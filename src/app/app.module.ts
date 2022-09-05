@@ -18,6 +18,7 @@ import { SearchComponent } from './search/search.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TruncatePipe } from './../pipes/truncate.pipe';
+import { TimeAgoExtendsPipe } from './../pipes/timeago.pipe';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { TruncatePipe } from './../pipes/truncate.pipe';
     ViewNoteComponent,
     SearchComponent,
     TruncatePipe,
+    TimeAgoExtendsPipe,
   ],
   imports: [
     BrowserModule,
