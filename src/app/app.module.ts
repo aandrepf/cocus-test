@@ -12,7 +12,6 @@ import { BottomAppComponent } from './bottom-app/bottom-app.component';
 import { CreateNoteComponent } from './create-note/create-note.component';
 import { OverlayComponent } from './overlay/overlay.component';
 import { ViewNoteComponent } from './view-note/view-note.component';
-import { NotesService } from './services/notes.service';
 import { NotesRepositoryService } from './services/notes.repository';
 import { SearchComponent } from './search/search.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -42,7 +41,7 @@ import { TimeAgoExtendsPipe } from './../pipes/timeago.pipe';
     MaterialModule,
     ReactiveFormsModule,
   ],
-  providers: [NotesRepositoryService, NotesService],
+  providers: [NotesRepositoryService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
