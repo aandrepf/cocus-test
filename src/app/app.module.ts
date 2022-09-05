@@ -10,8 +10,6 @@ import { NoteComponent } from './note/note.component';
 import { EmptyNotesComponent } from './empty-notes/empty-notes.component';
 import { BottomAppComponent } from './bottom-app/bottom-app.component';
 import { CreateNoteComponent } from './create-note/create-note.component';
-import { OverlayComponent } from './overlay/overlay.component';
-import { ViewNoteComponent } from './view-note/view-note.component';
 import { NotesRepositoryService } from './services/notes.repository';
 import { SearchComponent } from './search/search.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,8 +25,6 @@ import { TimeAgoExtendsPipe } from './../pipes/timeago.pipe';
     EmptyNotesComponent,
     BottomAppComponent,
     CreateNoteComponent,
-    OverlayComponent,
-    ViewNoteComponent,
     SearchComponent,
     TruncatePipe,
     TimeAgoExtendsPipe,
