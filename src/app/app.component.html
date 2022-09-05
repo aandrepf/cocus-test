@@ -1,4 +1,10 @@
-<section class="app-container">
+<ngx-ui-loader
+  [text]="config.text"
+  [fgsColor]="config.fgsColor"
+  [bgsOpacity]="config.bgsColor"
+  [bgsType]="config.bgsType"
+></ngx-ui-loader>
+<section class="app-container" NgxUiLoaderBlurred>
   <!-- TOPBAR -->
   <header>
     <mat-toolbar color="primary">

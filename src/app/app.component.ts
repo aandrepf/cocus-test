@@ -4,16 +4,20 @@ import {
   NotesInfo,
   NotesFilter,
 } from './../database/notes.data';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { NgxUiLoaderConfig } from 'ngx-ui-loader';
+import { LoaderService } from './services/loader.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   options: FormGroup;
+  config: NgxUiLoaderConfig;
+  subscriber: Subscription;
 
   isCreate = true;
   noteInfoToShow: NotesInfo;
@@ -24,7 +28,7 @@ export class AppComponent {
   filterApp = new NotesFilter();
   isToListView = true;
 
-  constructor(fb: FormBuilder, private noteStateService: NotesStateService) {
+  constructor(fb: FormBuilder, private noteStateService: NotesStateService, private loader: LoaderService) {
     this.options = fb.group({
       bottom: 0,
       fixed: false,
@@ -35,6 +39,9 @@ export class AppComponent {
       category: '',
       isToCreate: true,
     };
+    this.subscriber = this.loader.config.subscribe(
+      (config) => (this.config = config)
+    );
   }
 
   openSideRight(sideNavRight, open) {
@@ -73,5 +80,11 @@ export class AppComponent {
 
   returnToggle() {
     return this.isToListView;
+  }
+
+  ngOnDestroy(): void {
+      if (this.subscriber) {
+      this.subscriber.unsubscribe();
+    }
   }
 }

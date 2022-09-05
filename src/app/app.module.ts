@@ -11,11 +11,13 @@ import { EmptyNotesComponent } from './empty-notes/empty-notes.component';
 import { BottomAppComponent } from './bottom-app/bottom-app.component';
 import { CreateNoteComponent } from './create-note/create-note.component';
 import { NotesRepositoryService } from './services/notes.repository';
+import { LoaderService } from './services/loader.service';
 import { SearchComponent } from './search/search.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TruncatePipe } from './../pipes/truncate.pipe';
 import { TimeAgoExtendsPipe } from './../pipes/timeago.pipe';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 @NgModule({
   declarations: [
@@ -36,8 +38,9 @@ import { TimeAgoExtendsPipe } from './../pipes/timeago.pipe';
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
+    NgxUiLoaderModule
   ],
-  providers: [NotesRepositoryService],
+  providers: [NotesRepositoryService, LoaderService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

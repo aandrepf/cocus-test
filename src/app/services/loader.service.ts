@@ -7,16 +7,16 @@ import { NgxUiLoaderService, NgxUiLoaderConfig } from 'ngx-ui-loader';
   providedIn: 'root',
 })
 export class LoaderService {
-  private _config: BehaviorSubject<NgxUiLoaderConfig>;
+  private config$: BehaviorSubject<NgxUiLoaderConfig>;
   config: Observable<NgxUiLoaderConfig>;
 
   constructor(public ngxUiLoaderService: NgxUiLoaderService) {
-    this._config = new BehaviorSubject<NgxUiLoaderConfig>({});
-    this.config = this._config.asObservable();
+    this.config$ = new BehaviorSubject<NgxUiLoaderConfig>({});
+    this.config = this.config$.asObservable();
   }
 
   start(config: any) {
-    this._config.next(config);
+    this.config$.next(config);
     this.ngxUiLoaderService.start();
   }
 

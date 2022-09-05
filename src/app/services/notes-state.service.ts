@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { NotesFilter, NotesInfo } from '../../database/notes.data';
 import { map, shareReplay } from 'rxjs/operators';
 import { isNgTemplate } from '@angular/compiler';
+import { LoaderService } from './loader.service';
 
 interface NotesState {
   notesList: NotesInfo[];
@@ -30,6 +31,18 @@ const initialState: NotesState = {
   providedIn: 'root',
 })
 export class NotesStateService extends StateService<NotesState> {
+  private configsLoader = {
+    text: 'please wait...',
+    fgsColor: 'red',
+    bgsOpacity: 1,
+    blur: 15,
+    bgsType: 'circle',
+  };
+
+  get configs(): any {
+    return this.configsLoader;
+  }
+
   private notesFiltered$: Observable<NotesInfo[]> = this.select((state) => {
     return this.getNotesFilteredBySearchInput(state.notesList, state.filter);
   });
@@ -52,10 +65,14 @@ export class NotesStateService extends StateService<NotesState> {
     shareReplay({ refCount: true, bufferSize: 1 })
   );
 
-  constructor(private notesRepository: NotesRepositoryService) {
+  constructor(private notesRepository: NotesRepositoryService, private loader: LoaderService) {
     super(initialState);
-    this.initNotes();
-    this.initCategories();
+    this.loader.start(this.configs);
+    setTimeout(() => {
+      this.initNotes();
+      this.initCategories();
+      this.loader.stop();
+    }, 1000);
   }
 
   initNotes() {
@@ -67,7 +84,9 @@ export class NotesStateService extends StateService<NotesState> {
   initCategories() {
     this.notesRepository
       .getCategories()
-      .subscribe((categories) => this.setState({ categories }));
+      .subscribe((categories) => {
+        this.setState({ categories });
+      });
   }
 
   updateFilter(filter: NotesFilter) {
@@ -80,25 +99,30 @@ export class NotesStateService extends StateService<NotesState> {
   }
 
   create(note: NotesInfo) {
+    this.loader.start(this.configs);
     this.notesRepository.createNote(note).subscribe((ret) => {
       this.setState({
         notesList: [...this.notesState.notesList, ret],
         noteId: ret.id,
       });
+      this.loader.stop();
     });
   }
 
   update(note: NotesInfo) {
+    this.loader.start(this.configs);
     this.notesRepository.updateNote(note).subscribe((ret) => {
       this.setState({
         notesList: this.notesState.notesList.map((item) =>
           item.id === note.id ? ret : item
         ),
       });
+      this.loader.stop();
     });
   }
 
   delete(note: NotesInfo) {
+    this.loader.start(this.configs);
     this.notesRepository.deleteNote(note).subscribe(() => {
       this.setState({
         noteId: undefined,
@@ -106,6 +130,7 @@ export class NotesStateService extends StateService<NotesState> {
           (item) => item.id !== note.id
         ),
       });
+      this.loader.stop();
     });
   }
 
@@ -124,12 +149,5 @@ export class NotesStateService extends StateService<NotesState> {
         return item;
       }
     }).reverse();
-    // .sort((a, b) =>
-    //   new Date(a.time) > new Date(b.time)
-    //     ? 1
-    //     : new Date(b.time) > new Date(a.time)
-    //     ? -1
-    //     : 0
-    // );
   }
 }
