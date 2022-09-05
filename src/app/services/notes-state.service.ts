@@ -123,7 +123,7 @@ export class NotesStateService extends StateService<NotesState> {
       ) {
         return item;
       }
-    });
+    }).reverse();
     // .sort((a, b) =>
     //   new Date(a.time) > new Date(b.time)
     //     ? 1
