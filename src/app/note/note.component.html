@@ -33,5 +33,16 @@
     <div class="note-content">
       <span>{{ note.content | truncate: [163, "..."] }}</span>
     </div>
+    <div class="note-link" *ngIf="note.file">
+      <a href="{{ note.file }}" class="file-link" target="_blank">
+        <button
+          mat-icon-button
+          class="example-icon"
+          aria-label="Example icon-button with link icon"
+        >
+          <mat-icon>link</mat-icon> download file attached
+        </button>
+      </a>
+    </div>
   </div>
 </div>

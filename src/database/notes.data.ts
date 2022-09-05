@@ -4,6 +4,7 @@ export class NotesInfo {
   title: string;
   category: string;
   content: string;
+  file?: string;
 }
 
 export class NotesFilter {

@@ -25,6 +25,34 @@
           {{ category.name }}
         </option>
       </select>
+      <div class="file-upload-wpr">
+        <div>
+          <input
+            *ngIf="!uploadSuccess"
+            type="file"
+            (change)="upload($event.target.files)"
+          />
+          <span *ngIf="!uploadSuccess">{{ percentDone }}% <br /></span>
+          <a
+            *ngIf="uploadSuccess"
+            href="{{ fileLink }}"
+            class="file-link"
+            target="_blank"
+            >{{ fileLink }}</a
+          >
+          <span *ngIf="uploadSuccess"
+            ><button
+              mat-icon-button
+              class="example-icon delete-icon"
+              aria-label="Example icon-button with delete icon"
+              (click)="deleteFile()"
+            >
+              <mat-icon>delete</mat-icon>
+            </button></span
+          >
+        </div>
+      </div>
+
       <textarea
         placeholder="Your note.."
         required
