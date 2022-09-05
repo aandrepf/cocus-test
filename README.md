@@ -1,27 +1,23 @@
-# NotesTest
+# Notes app
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
+An simple app for Cocus Technical Test. I used json-server to simulate a fake database to use http request to load, create, delete, update notes and load categories to use on filter.
 
-## Development server
+## Starting
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+For run a local fake database, please install JSON-Server library globaly:
+<br> `npm install -g json-server`
 
-## Code scaffolding
+I use Angular Material for interactions and some layouts
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Run this project :computer: :computer_mouse:
 
-## Build
+#### Json-server
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+First, run the command below to start the local database to load notes and categories list
 
-## Running unit tests
+<br> `yarn start:db`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Angular
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+At the second time run this command to start the application
+<br> `yarn start`
