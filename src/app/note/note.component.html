@@ -1,0 +1,37 @@
+<div class="{{ classToChangeView === '' ? '' : classToChangeView }}">
+  <div class="note">
+    <div class="header common_header">
+      <img src="https://picsum.photos/id/1002/200" alt="" />
+      <div class="header-left">
+        <span class="note-username">You</span>
+        <span class="note-time">{{ note.time }}</span>
+      </div>
+      <div class="header-icons">
+        <small class="{{ note.category }}">{{ note.category }}</small>
+        <button
+          mat-icon-button
+          class="example-icon favorite-icon"
+          aria-label="Example icon-button with delete icon"
+          (click)="deleteThisNote(note)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          class="example-icon"
+          aria-label="Example icon-button with edit icon"
+          (click)="editThisNote(note)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="note-title">
+      <span>{{ note.title }}</span>
+    </div>
+    <div class="note-content">
+      <span>{{ note.content | truncate: [163, "..."] }}</span>
+    </div>
+  </div>
+</div>

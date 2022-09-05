@@ -1,0 +1,61 @@
+{
+  "notes": [
+    {
+      "id": "0d3b8354-5a2d-e025-d0ca-a1dfdad38b28",
+      "time": 1504176630103,
+      "title": "First Title..",
+      "category": "personal",
+      "content": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters"
+    },
+    {
+      "id": "5b5065cc-7ef4-a049-4443-0f88b8c194da",
+      "time": 1504176110203,
+      "title": "Second Title..",
+      "category": "shopping",
+      "content": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
+    },
+    {
+      "id": "d2e76716-95b7-87ed-7af1-b827220c44a9",
+      "time": 1503199024617,
+      "title": "Third Title..",
+      "category": "bills",
+      "content": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old."
+    },
+    {
+      "id": "10641be8-e368-f44e-2037-aa51e0762ecf",
+      "time": 1503309104117,
+      "title": "Fourth Title..",
+      "category": "friends",
+      "content": "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
+    },
+    {
+      "id": "fd4d86a4-0bf5-dceb-d26b-dd3a044b0506",
+      "time": 1503309024617,
+      "title": "Fifth Title..",
+      "category": "party",
+      "content": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "shopping"
+    },
+    {
+      "id": 2,
+      "name": "party"
+    },
+    {
+      "id": 3,
+      "name": "friends"
+    },
+    {
+      "id": 4,
+      "name": "personal"
+    },
+    {
+      "id": 5,
+      "name": "bills"
+    }
+  ]
+}

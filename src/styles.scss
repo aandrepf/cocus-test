@@ -1,0 +1,252 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import "./styles/main";
+
+.input-grey-rounded {
+  font-size: 16px;
+  line-height: 1.5;
+  background: $whiteColor1;
+  border: 1px solid #d5d9db;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='%238C92A0' d='M11.44 10.73l4.41 4.42a.5.5 0 1 1-.7.7l-4.42-4.41a6.5 6.5 0 1 1 .7-.7v-.01zM6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z'></path></svg>");
+  background-repeat: no-repeat;
+  background-position: 15px 10px;
+  background-size: 20px 20px;
+  border-radius: 100px;
+  width: 100%;
+  padding: 0.5em 0 0.5em 2.5em;
+}
+
+.input-grey-rounded::placeholder {
+  color: #838d99;
+  position: relative;
+}
+
+.input-grey-rounded:focus {
+  outline: none;
+  background-color: #fff;
+  border: 1px solid #84a2fa;
+}
+
+.notes-wpr {
+  height: 100%;
+  width: 100%;
+
+  .notes-container {
+   height: calc( 100% - 50px);
+    overflow: auto;
+    padding: 10px;
+    word-break: break-all;
+  }
+}
+
+.note {
+  background: $whiteColor1;
+  padding: 10px;
+  display: block;
+  font-size: 14px;
+  border: 1px solid $headerBorder;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 1px 3px #333;
+  }
+
+  & .header {
+    margin-bottom: 7px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    & img {
+      height: 31px;
+      width: 31px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    & .header-left {
+      display: inline-block;
+      margin-left: 5px;
+      flex:1;
+      & .note-username {
+        display: block;
+        color: $dark;
+        font-weight: 600;
+        position: relative;
+        top: 2px;
+      }
+      & .note-time {
+        font-size: 13px;
+        color: $greyLight;
+        position: relative;
+        top: -1px;
+      }
+    }
+
+    & .header-icons {
+      small {
+        padding: 0.25rem 0.75rem;
+        border-radius: 50px;
+        color: #fff;
+        font-weight: bold;
+      }
+    }
+  }
+  & .note-title,
+  & .note-content {
+    color: $dark;
+  }
+  & .note-title {
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+}
+
+.create-note {
+  width: 380px;
+  & input[type="text"],
+  & textarea {
+    padding: 7px !important;
+    width: 94%;
+    font-size: 14px;
+  }
+  & input[type="text"] {
+    margin-bottom: 9px;
+  }
+  & textarea {
+    height: 250px;
+  }
+  & .create-note-bottom {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    & input[type="submit"] {
+      margin-left: 5px;
+      padding: 5px 10px;
+      margin-right: 6px;
+      font-size: 14px;
+    }
+  }
+}
+
+.editor-wpr {
+  margin-top: 5px;
+}
+
+.end-of-page {
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+  color: $greyLight;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1px solid $whiteColor2;
+  &:hover {
+    border: 1px solid $greyColor;
+  }
+}
+
+.home {
+  position: relative;
+  padding: 0 20px;
+  margin-bottom: 60px;
+  & .home-info {
+    margin-bottom: 10px;
+    background: $whiteColor1;
+    padding: 14px 10px;
+    border: 1px solid $headerBorder;
+    border-radius: 3px;
+    font-size: 15px;
+    & a {
+      position: absolute;
+      right: 30px;
+      padding: 4px 12px;
+      top: 10px;
+    }
+  }
+}
+
+.view-note-wpr {
+  width: 600px;
+  & .view-note-middle {
+    & .view-note-info {
+      margin-bottom: 5px;
+      & img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+      & .view-note-left {
+        display: inline-block;
+        margin-left: 5px;
+        position: relative;
+        top: -5px;
+        & .view-note-username {
+          display: block;
+          font-weight: 600;
+          font-size: 15px;
+          color: inherit;
+        }
+        & .view-note-time {
+          font-size: 13px;
+          color: $greyLight;
+          position: relative;
+          top: -2px;
+        }
+      }
+    }
+    & .view-note-title {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 3px;
+      font-size: 15px;
+      outline: none;
+    }
+    & .view-note-content {
+      display: block;
+      outline: none;
+    }
+    & .view-note-title[contenteditable="true"],
+    & .view-note-content[contenteditable="true"] {
+      border: 1px solid #54bbff;
+      padding: 5px 5px !important;
+      border-radius: 2px;
+    }
+  }
+  & .view-note-bottom {
+    a {
+      margin-left: 5px;
+    }
+    & .view-note-cancel {
+      margin-right: 5px;
+    }
+    & .view-note-int {
+      position: absolute;
+      color: $greyLight;
+      bottom: 10px;
+      left: 10px;
+      span.like_unlike {
+        display: inline-block;
+        height: 24px;
+        cursor: pointer;
+        transition: all 0.1s ease-in-out;
+        &:hover {
+          color: $dark;
+          transform: scale(1.1);
+        }
+      }
+      & .like-not-like {
+        cursor: not-allowed !important;
+        pointer-events: none !important;
+        color: #d8c3c3 !important;
+      }
+    }
+  }
+}

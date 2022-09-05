@@ -1,0 +1,49 @@
+<div class="create-note">
+  <div class="c_n_header">
+    <span class="title">{{ createOrEdit ? "Create" : "Edit" }} a note</span>
+  </div>
+  <form [formGroup]="createOrEditForm">
+    <div class="c_n_middle">
+      <input
+        type="text"
+        placeholder="Title.."
+        required
+        spellCheck="false"
+        autoComplete="false"
+        class="n_title"
+        formControlName="title"
+        autoFocus
+      />
+      <select
+        *ngIf="categoriesList$ | async as categories"
+        class="n_title"
+        formControlName="category"
+        (change)="selectCategory($event.target.value)"
+      >
+        <option value="" selected>Select Category Above</option>
+        <option *ngFor="let category of categories" [value]="category.name">
+          {{ category.name }}
+        </option>
+      </select>
+      <textarea
+        placeholder="Your note.."
+        required
+        spellCheck="false"
+        class="n_content"
+        autoComplete="false"
+        formControlName="textInfo"
+      ></textarea>
+    </div>
+  </form>
+
+  <div class="create-note-bottom">
+    <a href="#" class="c_n_cancel sec_btn" (click)="cancelAction()">Cancel</a>
+    <input
+      [disabled]="!createOrEditForm.valid"
+      type="submit"
+      class="c_n_add pri_btn"
+      value="{{ createOrEdit ? 'Add' : 'Edit' }} Note"
+      (click)="createOrEdit ? createNote() : editNote()"
+    />
+  </div>
+</div>

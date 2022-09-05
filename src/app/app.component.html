@@ -1,0 +1,92 @@
+<section class="app-container">
+  <!-- TOPBAR -->
+  <header>
+    <mat-toolbar color="primary">
+      <button
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with menu icon"
+        (click)="sidenavLeft.toggle()"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="input-wpr"
+        ><app-search
+          (noteFilterEmit)="filterUpdate($event)"
+          [noteFilter]="notesFilter$ | async"
+        ></app-search
+      ></span>
+      <!-- <span class="example-spacer"></span> -->
+      <button
+        mat-icon-button
+        class="example-icon favorite-icon"
+        aria-label="Example icon-button with grid view icon"
+        (click)="toggleListGridView(false)"
+      >
+        <mat-icon>grid_view</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with list view icon"
+        (click)="toggleListGridView(true)"
+      >
+        <mat-icon>list</mat-icon>
+      </button>
+    </mat-toolbar>
+  </header>
+
+  <section class="content-container">
+    <mat-sidenav-container class="example-container">
+      <mat-sidenav
+        #sidenavLeft
+        mode="side"
+        class="example-sidenav"
+        color="primary"
+        [position]="'start'"
+        [fixedInViewport]="options.value.fixed"
+        [fixedTopGap]="options.value.top"
+        [fixedBottomGap]="options.value.bottom"
+      >
+        <div class="category-wpr">
+          <h2>Categories</h2>
+          <mat-list role="list" *ngIf="categoriesList$ | async as categories">
+            <mat-list-item
+              *ngFor="let category of categories"
+              role="listitem"
+              (click)="filterListByCategory(category.name)"
+              >{{ category.name | uppercase }}</mat-list-item
+            >
+          </mat-list>
+        </div>
+      </mat-sidenav>
+
+      <mat-sidenav-content [formGroup]="options">
+        <app-notes
+          [gridOrList]="returnToggle()"
+          (openEditNotes)="openSideRight(sidenavRight, $event)"
+          (selectNote)="noteInfo($event)"
+        ></app-notes>
+      </mat-sidenav-content>
+
+      <mat-sidenav
+        #sidenavRight
+        mode="side"
+        class="example-sidenav form-sidenav"
+        color="default"
+        [position]="'end'"
+        [fixedInViewport]="options.value.fixed"
+        [fixedTopGap]="options.value.top"
+        [fixedBottomGap]="options.value.bottom"
+      >
+        <app-create-note
+          (onCancel)="sidenavRight.close()"
+          (onCreateNote)="addNewNote($event)"
+          (onEditNote)="editNote($event)"
+          [noteToEdit]="noteInfoToShow"
+          [createOrEdit]="isCreate"
+        ></app-create-note>
+      </mat-sidenav>
+    </mat-sidenav-container>
+  </section>
+</section>

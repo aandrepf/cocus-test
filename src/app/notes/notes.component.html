@@ -1,0 +1,36 @@
+<div class="home" *ngIf="notesList$ | async as notes">
+  <div class="home-info">
+    <span>{{ notes.length }} Notes</span>
+    <a href="#" class="pri_btn" (click)="itToCreateNote($event)">Create note</a>
+    <a href="#" class="pri_btn clear_btn" (click)="isToClearFilter()"
+      >Clear Filter</a
+    >
+  </div>
+
+  <app-bottom-app *ngIf="notes.length == 0"></app-bottom-app>
+
+  <section class="home-notes {{ gridOrList ? '' : 'home-note-to-grid' }}">
+    <div *ngFor="let note of notes">
+      <app-note
+        [classToChangeView]="gridOrList ? '' : 'note-to-grid'"
+        [note]="note"
+        (onDelete)="deleteNote(note)"
+        (onEditNote)="isToEditNote($event)"
+      ></app-note>
+    </div>
+  </section>
+
+  <app-bottom-app *ngIf="notes.length > 0"></app-bottom-app>
+
+  <!-- <app-overlay [visible]="true" *ngIf="create"> </app-overlay> -->
+
+  <!-- <app-create-note
+    *ngIf="create"
+    (onBack)="toggle($event)"
+    (onCreateNote)="createNote($event)"
+  >
+  </app-create-note> -->
+
+  <!--
+   -->
+</div>

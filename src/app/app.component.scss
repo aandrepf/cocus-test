@@ -1,0 +1,48 @@
+.app-container {
+  height: 100%;
+  width: 100%;
+}
+.app-container header {
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+.app-container .content-container {
+  height: 1000vh;
+  overflow: auto;
+  padding: 64px 0 0;
+  word-break: break-all;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.input-wpr {
+  // flex: 1 1 auto;
+  // display: flex;
+  // flex-wrap: wrap;
+  // flex-direction: row;
+  // justify-content: center;
+  width: 100%;
+}
+
+.example-sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #3f51b5;
+  color: #fff !important;
+}
+
+.form-sidenav {
+  width: 400px;
+  background: #f1f1f1 !important;
+}
+
+.category-wpr {
+  color: #fff !important;
+  margin-top: 20px;
+}
